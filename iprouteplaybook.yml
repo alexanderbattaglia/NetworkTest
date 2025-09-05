@@ -1,0 +1,28 @@
+# This playbook requires an Ansible inventory file with a group named 'nexus_switches'.
+# The inventory should also contain connection details for the Nexus devices.
+# Example inventory (inventory.ini):
+# [nexus_switches]
+# nexus1 ansible_host=192.168.1.1
+#
+# [all:vars]
+# ansible_user=admin
+# ansible_password=your_password
+# ansible_network_os=cisco.nxos.nxos
+# ansible_connection=network_cli
+---
+- name: Fetch IP Route from Nexus and Save Locally
+  hosts: nexus_switches
+  gather_facts: no
+
+  tasks:
+    - name: Execute show ip route on Nexus switch
+      cisco.nxos.nxos_command:
+        commands:
+          - show ip route
+      register: route_output
+
+    - name: Store route output in a local file
+      copy:
+        content: "{{ route_output.stdout[0] }}"
+        dest: "/home/abattaglia/.gemini/route.txt"
+      delegate_to: localhost
