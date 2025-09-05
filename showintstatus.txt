@@ -1,0 +1,1 @@
+This file will contain the output of the 'show interface status' command after the Ansible playbook is run.
