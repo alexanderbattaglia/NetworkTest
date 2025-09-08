@@ -1,0 +1,22 @@
+---
+- name: Collect Nexus Logs
+  hosts: nexus
+  gather_facts: false
+
+  tasks:
+    - name: Run show logging
+      cisco.nxos.nxos_command:
+        commands:
+          - show logging
+      register: log_output
+
+    - name: Save logs to a single file
+      lineinfile:
+        path: "./nexus_logs.txt"
+        line: |
+          --------------------
+          Logs for {{ inventory_hostname }}
+          --------------------
+          {{ log_output.stdout[0] }}
+        create: yes
+      delegate_to: localhost
