@@ -10,3 +10,6 @@ All network devices must have logging to buffer to set to the level notification
 
 ## NTP
 All network device must have ntp configured towards 8.8.8.8 and must be sync'd. 
+
+## CDP 
+All routers (devices that start with R) should have cdp enable on interface eth0/1
