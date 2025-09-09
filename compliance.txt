@@ -7,3 +7,6 @@ All interfaces in an UP state must have an interface description in all caps.
 ## Logging
 
 All network devices must have logging to buffer to set to the level notification.
+
+##
+All network device must have ntp configured towards 8.8.8.8 and must be sync'd. 
