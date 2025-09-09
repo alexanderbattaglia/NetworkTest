@@ -1,0 +1,18 @@
+# Non-Compliant Devices
+
+## Device: R1
+
+- **Failed Check:** Interface Descriptions
+- **Details:** Interface Ethernet0/2 has a description that is not in all caps.
+- **Non-Compliant Configuration:**
+  interface Ethernet0/2
+    description to port1.sandbox-backend
+
+---
+
+## Device: R2
+
+- **Failed Check:** Logging
+- **Details:** The device is not configured with logging buffered to the level "notifications".
+- **Non-Compliant Configuration:**
+  (missing) logging buffered notifications
